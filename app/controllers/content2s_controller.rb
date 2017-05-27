@@ -5,6 +5,7 @@ class Content2sController < ApplicationController
   
   def index
     @contents = Content2.all
+    @contentss = @contents.paginate(page: params[:page], per_page: 10)
   end
 
   def show

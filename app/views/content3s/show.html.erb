@@ -1,13 +1,25 @@
+<!--Content3 입니다 방구하기-->
 <div class=wholebox>
-<h2>
-    제목:<%= @content.title %>
-</h2>
-<p>
-    <%= simple_format(@content.body) %>
-</p>
-
-<br>
-
+<div class=show>
+        <h3>
+            <%= @content.title %>
+        </h3><br>
+        
+        <p><%=@content.campus %> 캠퍼스 <%=@content.gender %>학우</p>
+        <p><%=@content.date %> 에 방을 구해요</p>
+        <p>
+            <%= simple_format(@content.body) %>
+        </p>
+                <% if can? :update, @content %>
+                <td width="15%"><%= link_to '글 수정하기', edit_content3_path(@content) %></td>
+                <%end%>
+                
+                <% if can? :destroy, @content %>
+                <td width="15%"><%= link_to '삭제하기', content3_path(@content), method: :delete, 
+                    data:{confirm:'정말 삭제하시겠습니까?'} %></td>
+                <%end%>
+    
+</div>
 <댓글 목록><br>
 
 

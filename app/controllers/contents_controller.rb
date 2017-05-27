@@ -1,14 +1,15 @@
 class ContentsController < ApplicationController
-  
   before_action :authorize, only: [:new, :edit, :update, :destroy]
   load_and_authorize_resource
   
   def index
     @contents = Content.all
+    @contentss = @contents.paginate(page: params[:page], per_page: 6)
   end
 
   def show
     @content = Content.find(params[:id])
+     @contents = Content.all
   end
 
   def new
@@ -62,7 +63,7 @@ class ContentsController < ApplicationController
   
   
   def content_params
-    params.require(:content).permit(:title, :body, :user_id, :image_url, :rate2_id, :pic)
+    params.require(:content).permit(:title, :body, :user_id, :image_url, :rate2_id, :date, :campus, :gender, :shower, :airconditioner,:laundry)
     # :image 추가 >> 사진 저장
   end
   

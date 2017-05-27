@@ -18,7 +18,7 @@ Rails.application.routes.draw do
     resources 'comments'
   end
   
-    resources 'contents' do
+  resources 'contents' do
     resources 'rate2s'
   end
   
