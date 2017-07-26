@@ -123,7 +123,7 @@ li a:hover {
 
 .bottom{
      position: absolute;
-    top: 1500px;
+    bottom: -1000px;
      width: 2px;
     height: 100px;
     margin-left: 350px;
@@ -147,7 +147,7 @@ li a:hover {
 
 
 .post{
-    text-align: left;
+text-align: center;
 width:80%;
 margin:auto;
 }
@@ -155,4 +155,8 @@ margin:auto;
 .show{
      text-align: left;
      margin:auto;
+}
+
+#comment_body {
+    width:450px;
 }

@@ -3,11 +3,11 @@
 <div class=wholebox><br>
         <div class=show>
                 <h3>
-                    <%= @content.title %><br>
-                </h3>
-                <p> <%= @content.campus %>캠퍼스에 거주하는<%= @content.gender %>학우입니다  </p>
-                <P> <%= @content.date %>에 손님 맞을 준비가 되었습니다! </P>
-                <p> 샤워는 <%= @content.shower %>하고, 에어컨은 사용 <%= @content.airconditioner %>하며, 세탁기 사용은 <%= @content.laundry %>합니다.</p>
+                    글 제목: <%= @content.title %><br>
+                </h3><hr style=weight:bold, color:black>
+                <p> <%= @content.campus %>캠퍼스에 거주하는 <%= @content.gender %>학우입니다  </p>
+                <P> <%= @content.date.strftime("%Y년 %m월 %d일부터 손님 맞을 준비가 되었습니다!") %> </P>
+                <p> 샤워 <%= @content.shower %>하고, 에어컨은 사용 <%= @content.airconditioner %>하며, 세탁기 사용은 <%= @content.laundry %>합니다.</p>
                    <%= @content.body %>
                    <br><br>
                 <div id= "room_image">
@@ -52,8 +52,8 @@
 <br><br>
 <% if @current_user!=nil %>
 <%= form_for [@content, Comment.new] do |f|%>
-    <%= f.text_area :body %><br>
-    <%= f.submit '문의 등록'%>
+    <%= f.text_area :body%>
+    <%= image_submit_tag ("commentbutton.png")%>
 <%end%>
 <% end %><br>
 
@@ -78,7 +78,7 @@
                         <!--</%end%>-->
                         
                     <% if can? :destroy, comment %>
-                    <td width="15%"><%= link_to '삭제하기', [comment.content, comment], method: :delete, 
+                    <td width="15%"><%= link_to image_tag("/assets/deletebutton.png"), [comment.content, comment], method: :delete, 
                                 data:{confirm:'정말 삭제하시겠습니까?'} %>
                     <% end %></td>
                 
@@ -96,8 +96,8 @@
 
 <br>
 
- <%= link_to '후기 보기', rate2_path %><br>
- <%= link_to '목록으로', contents_path %>
+ <%= link_to image_tag("/assets/reviewbutton.png"), rate2_path %><br><br>
+ <%= link_to image_tag("/assets/listbutton.png"), contents_path %>
  <br><h2>
 
     

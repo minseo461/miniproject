@@ -4,8 +4,17 @@ class ContentsController < ApplicationController
   
   def index
     @contents = Content.all
-    @contentss = @contents.paginate(page: params[:page], per_page: 6)
+    @contentss = @contents.paginate(page: params[:page], per_page: 8)
+    
+    @contents = Content.search(params[:search])
   end
+  
+  def searchindex
+    @contents = Content.all
+    @content = Content.new
+    @contents= Content.search(params[:search]).reverse
+  end
+
 
   def show
     @content = Content.find(params[:id])
@@ -63,7 +72,7 @@ class ContentsController < ApplicationController
   
   
   def content_params
-    params.require(:content).permit(:title, :body, :user_id, :image_url, :rate2_id, :date, :campus, :gender, :shower, :airconditioner,:laundry)
+    params.require(:content).permit( :title, :body, :user_id, :pic, :image_url, :rate2_id, :date, :campus, :gender, :shower, :airconditioner,:laundry)
     # :image 추가 >> 사진 저장
   end
   

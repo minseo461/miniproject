@@ -2,7 +2,7 @@
 <div class=wholebox>
 <div class=show>
         <h3>
-            <%= @content.title %>
+        글 제목: <%= @content.title %>
         </h3><br>
         
         <p><%=@content.campus %> 캠퍼스 <%=@content.gender %>학우</p>
@@ -11,11 +11,11 @@
             <%= simple_format(@content.body) %>
         </p>
                 <% if can? :update, @content %>
-                <td width="15%"><%= link_to '글 수정하기', edit_content3_path(@content) %></td>
+                <td width="15%"><%= link_to image_tag("/assets/editbutton.png"), edit_content3_path(@content) %></td>
                 <%end%>
                 
                 <% if can? :destroy, @content %>
-                <td width="15%"><%= link_to '삭제하기', content3_path(@content), method: :delete, 
+                <td width="15%"><%= link_to image_tag("/assets/deletebutton.png"), content3_path(@content), method: :delete, 
                     data:{confirm:'정말 삭제하시겠습니까?'} %></td>
                 <%end%>
     
@@ -33,7 +33,7 @@
         <!--</%end%>-->
         
             <% if can? :destroy, comment %>
-            <%= link_to '삭제하기', [comment.content3, comment], method: :delete, 
+            <%= link_to image_tag("/assets/deletebutton.png"), [comment.content3, comment], method: :delete, 
                 data:{confirm:'정말 삭제하시겠습니까?'} %>
             <% end %>
    
@@ -46,10 +46,10 @@
 <% if @current_user!=nil %>
 <%= form_for [@content, Comment3.new] do |f|%>
     <%= f.text_area :body %>
-    <%= f.submit '문의 등록'%>
+<%= image_submit_tag("commentbutton.png") %>
 <%end%>
 <% end %>
 
 
- <%= link_to '목록으로', content3s_path %>
+ <%= link_to image_tag("/assets/listbutton.png"), content3s_path %>
  </div>

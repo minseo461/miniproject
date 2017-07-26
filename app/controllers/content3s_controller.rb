@@ -6,6 +6,13 @@ class Content3sController < ApplicationController
   def index
     @contents = Content3.all
     @contentss = @contents.paginate(page: params[:page], per_page: 10)
+    @contents = Content3.search(params[:search])
+  end
+  
+  def searchindex
+    @contents = Content3.all
+    @content = Content3.new
+    @contents= Content3.search(params[:search]).reverse
   end
 
   def show

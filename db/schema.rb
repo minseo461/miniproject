@@ -60,6 +60,8 @@ ActiveRecord::Schema.define(version: 20170527133304) do
     t.string   "title"
     t.text     "body"
     t.integer  "user_id"
+    t.string   "stringid"
+    t.string   "realname"
     t.string   "image_url",      default: ""
     t.date     "date"
     t.integer  "rate2_id"
